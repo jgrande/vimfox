@@ -2,6 +2,13 @@ var Vimium = {
 	init: function() {
 		// initialization code
 		this.initialized = true;
+		var xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
+			.getService(Components.interfaces.nsIXULRuntime);
+		if (xulRuntime.OS == 'Darwin') {
+			this.newTabKey = 'meta';
+		} else {
+			this.newTabKey = 'ctrl';
+		}
 		document.addEventListener('keydown', Vimium.onKeydown, true);
 	},
 
@@ -293,8 +300,10 @@ var Vimium = {
 		if(Vimium.isEditable(e)) {
 			e.focus();
 		} else {
-			var evt = doc.createEvent("MouseEvents");
-			evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, newTab, false, false, false, 0, null);
+			var evt = document.createEvent("MouseEvents");
+			evt.initMouseEvent("click", true, true, document.defaultView,
+				0, 0, 0, 0, 0, newTab && Vimium.newTabKey == 'ctrl', false,
+				false, newTab && Vimium.newTabKey == 'meta', 0, null);
 			e.dispatchEvent(evt);
 		}
 	},
