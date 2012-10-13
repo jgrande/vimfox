@@ -22,6 +22,12 @@ var Vimium = {
 			var doc = gBrowser.contentDocument;
 			doc.defaultView.scrollTo(0, doc.body.parentElement.scrollHeight)
 		},
+		'<C-f>': function() { gBrowser.contentDocument.defaultView.scrollByPages(1); },
+		'<C-b>': function() { gBrowser.contentDocument.defaultView.scrollByPages(-1); },
+		'<C-u>': function() { gBrowser.contentDocument.defaultView.scrollByLines(-20); },
+		'<C-d>': function() { gBrowser.contentDocument.defaultView.scrollByLines(20); },
+		'<C-o>': function() { gBrowser.goBack(); },
+		'<C-i>': function() { gBrowser.goForward(); },
 	},
 
 	// Vimium
