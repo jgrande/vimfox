@@ -4,13 +4,13 @@
 
   <Description about="urn:mozilla:install-manifest">
   
-    <em:id>minoru-kun@inbox.ru</em:id>
-    <em:name>Vimium</em:name>
-    <em:version>1.36</em:version>
-    <em:description>The Hacker's Browser. Vimium provides keyboard shortcuts for navigation and control in the spirit of Vim.</em:description>
-    <em:creator>Valentin Dudouyt</em:creator>
+    <em:id>vimfox@github.com</em:id>
+    <em:name>VimFox</em:name>
+    <em:version>0.1</em:version>
+    <em:description>VimFox allows you to browse the web with Firefox using hints and VIM's keys.</em:description>
+    <em:creator>Juan Grande</em:creator>
     <em:type>2</em:type>
-    <em:optionsURL>chrome://vimium/content/options.xul</em:optionsURL>  
+    <em:homepageURL>http://github.com/jgrande/vimfox</em:homepageURL>  
 
     <!-- Firefox -->
     <em:targetApplication>
