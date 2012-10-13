@@ -2,6 +2,7 @@ var Vimium = {
 	init: function() {
 		// initialization code
 		this.initialized = true;
+		this.ignoreURLs = /^https?:\/\/\mail\.google\.com\/.*$/
 		var xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULRuntime);
 		if (xulRuntime.OS == 'Darwin') {
@@ -326,6 +327,9 @@ var Vimium = {
 		return(vimium);
 	},
 	onKeydown: function(e) { 
+		if (Vimium.ignoreURLs.test(gBrowser.currentURI.spec))
+			return;
+
 		var doc = gBrowser.contentDocument;
 		var keyChar = String.fromCharCode(e.keyCode).toLowerCase();
 		if (e.shiftKey)
