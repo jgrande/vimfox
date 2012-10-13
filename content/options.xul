@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<dialog id="vimium-prefs"  
+     title="Vimium Options"
+     buttons="accept, cancel"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+     ondialogaccept="savePrefs();">
+	<tabbox id='tabbox' flex="1">
+		<tabs>
+			<tab id="keymap-prefs" label="Keymap"/>
+			<tab id="hinting-prefs" label="Hinting"/>
+		</tabs>
+		<tabpanels flex="1">
+			<vbox flex="1" style="overflow: auto; width: 700px; height: 400px;">
+				<tree id="tree1" flex="1" hidecolumnpicker="true" seltype="single" editable="true"
+							onchange="validateKeymap(this)"
+							onkeypress="onKeypress(this, event)">
+					<treecols>
+						<treecol id="keybind"  flex="1" label="Keybinding" />
+						<treecol id="descr"  flex="1" label="Description" />
+						<treecol id="code"  flex="5" label="Action" />
+					</treecols>
+					<treechildren>
+					</treechildren>
+				</tree>
+				<hbox>
+					<button flex="1" id="add_button_1" label="Add" accesskey="A"/>
+					<button flex="1" label="Delete" accesskey="D" oncommand="removeCurrentRow($('tree1'))"/>
+				</hbox>
+			</vbox>
+			<vbox>
+				<tree id="tree2" flex="1" hidecolumnpicker="true" seltype="single" editable="true"
+							onchange="validateKeymap(this)"
+							onkeypress="onKeypress(this, event)">
+					<treecols>
+						<treecol id="xpath"  flex="1" hideheader="true"/>
+					</treecols>
+					<treechildren>
+					</treechildren>
+				</tree>
+				<hbox>
+					<textbox id="xpath-input" flex="6"/>
+					<button flex="1" id="add_button_2" label="Add" accesskey="A"/>
+					<button flex="1" label="Delete" accesskey="D" oncommand="removeCurrentRow($('tree2'))"/>
+				</hbox>
+			</vbox>
+		</tabpanels>
+	</tabbox>
+	<script type="text/javascript" src="options.js"></script>
+</dialog>

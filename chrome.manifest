@@ -1,0 +1,2 @@
+content	vimium	content/
+overlay	chrome://browser/content/browser.xul	chrome://vimium/content/overlay.xul

@@ -1,0 +1,56 @@
+<script type="text/javascript">
+var settings = { 'filterLinkHints': "true",
+		'get': function(p) {
+			return(this[p])
+		}
+	};
+var HUD = {
+		show: function(s) {
+			alert(s);
+		},
+		hide: function() {
+		}
+	};
+</script>
+<script type="text/javascript" src="content/chromeCompat.js">
+</script>
+<script type="text/javascript" src="content/vimiumFrontend.js">
+</script>
+<script type="text/javascript" src="content/commands.js">
+</script>
+<script type="text/javascript" src="content/linkHints.js">
+</script>
+<script type="text/javascript">
+function addCssToPage(css) {
+  var head = document.getElementsByTagName("head")[0];
+  if (!head) {
+    head = document.createElement("head");
+    document.documentElement.appendChild(head);
+  }
+  var style = document.createElement("style");
+  style.type = "text/css";
+  style.appendChild(document.createTextNode(css));
+  head.appendChild(style);
+}
+var linkHintCss =
+    '.internalVimiumHintMarker {' +
+      'position:absolute;' +
+      'background-color:yellow;' +
+      'color:black;' +
+      'font-weight:bold;' +
+      'font-size:12px;' +
+      'padding:0 1px;' +
+      'line-height:100%;' +
+      'width:auto;' +
+      'display:block;' +
+      'border:1px solid #E3BE23;' +
+      'z-index:99999999;' +
+      'font-family:"Helvetica Neue", "Helvetica", "Arial", "Sans";' +
+      'top:-1px;' +
+      'left:-1px;' +
+    '}' +
+    '.internalVimiumHintMarker > .matchingCharacter {' +
+      'color:#C79F0B;' +
+    '}';
+</script>
+<a href="#">clickMe</a>
