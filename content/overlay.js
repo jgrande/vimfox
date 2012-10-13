@@ -321,8 +321,18 @@ var Vimium = {
 			doc.vimium = Vimium.initDoc();
 		var active = doc.vimium.active;
 		var editable = Vimium.isEditable(e.target);
-		if(!active && !editable && e.target.innerHTML && !e.ctrlKey) {
+		if(!active && !editable && e.target.innerHTML) {
+			if (e.ctrlKey || e.altKey || e.metaKey)
+				doc.vimium.cmd_search += "<";
+			if (e.ctrlKey)
+				doc.vimium.cmd_search += "C-";
+			if (e.altKey)
+				doc.vimium.cmd_search += "A-";
+			if (e.metaKey)
+				doc.vimium.cmd_search += "D-";
 			doc.vimium.cmd_search += keyChar;
+			if (e.ctrlKey || e.altKey || e.metaKey)
+				doc.vimium.cmd_search += ">";
 			var match, matched = [];
 			for(var key in Vimium.keymap) {
 				match = key.substr(0, doc.vimium.cmd_search.length) == doc.vimium.cmd_search;
