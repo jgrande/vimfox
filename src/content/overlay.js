@@ -358,6 +358,10 @@ var Vimium = {
 				if(match)
 					matched.push(key);
 			}
+            if(matched.length > 0) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
 			if(matched.length == 1 && matched[0] == doc.vimium.cmd_search) {
 				var action = Vimium.keymap[matched[0]];
 				switch(typeof(action)) {
