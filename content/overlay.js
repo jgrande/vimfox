@@ -398,12 +398,12 @@ var Vimium = {
 		for(var i = 0; i < doc.vimium.hintMarkers.length; i++)
 			hints.push({marker: doc.vimium.hintMarkers[i], element: doc.vimium.visibleElements[i].element});
 		var matched = Array.filter(hints, function(e) {
-			var hintstring = e.marker.attributes.hintstring.value;
+			var hintstring = e.marker.getAttribute('hintString');
 			var match = hintstring.substr(0, s.length) == s;
 			e.marker.style.visibility = match ? "" : "hidden";
 			return(match);
 		});
-		if(matched.length == 1 && matched[0].marker.attributes.hintstring.value == s) {
+		if(matched.length == 1 && matched[0].marker.getAttribute('hintString') == s) {
 			doc.vimium.activate_callback(matched[0].element, doc.vimium.activate_callback_arg);
 			Vimium.deactivateMode();
 		}
